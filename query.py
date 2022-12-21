@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import csv
 from datetime import datetime, date
 from dateutil.relativedelta import relativedelta
@@ -114,10 +115,11 @@ def main():
         patientConditions.append(processSample(sample))
     pass
     condition = makeDisjunction(patientConditions)
+    # TODO: Unhardcode department condition
     condition = makeConjunction([
         join("ODDELENI", "=", "1032"),
         condition])
-    pass
+    
     print(condition)
 
     # file_name = SAVE_DIR_NAME + "query-" + str(YEAR) + "-b" + str(DAYS_BEFORE) + "-a" + str(DAYS_AFTER) + ".txt"
